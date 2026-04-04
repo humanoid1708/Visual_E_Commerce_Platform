@@ -1,0 +1,91 @@
+.card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+.card:hover { box-shadow: 0 8px 32px rgba(26,23,20,0.1); }
+.card:hover .image { transform: scale(1.04); }
+
+.imageWrap {
+  display: block;
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--cream);
+}
+.image {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--border);
+}
+.placeholder span {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--muted);
+  opacity: 0.4;
+}
+
+.discountBadge {
+  position: absolute;
+  top: 10px; left: 10px;
+  background: var(--accent);
+  color: white;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+  border-radius: var(--radius);
+}
+
+.heartBtn {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 32px; height: 32px;
+  background: var(--white);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  box-shadow: 0 2px 8px rgba(26,23,20,0.12);
+  transition: color var(--transition), transform var(--transition);
+  z-index: 1;
+}
+.heartBtn:hover { transform: scale(1.1); color: var(--accent); }
+.heartBtn.wishlisted { color: var(--accent); }
+
+.info { padding: 12px; }
+.brand {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.name {
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+}
+.priceRow { display: flex; align-items: center; gap: 8px; }
+.price {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.mrp {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: line-through;
+}

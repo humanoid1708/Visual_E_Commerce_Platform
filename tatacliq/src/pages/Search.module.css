@@ -1,0 +1,103 @@
+.main { padding-top: calc(var(--nav-h) + 40px); padding-bottom: 80px; min-height: 100vh; }
+
+.searchBar {
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+.form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 12px;
+  color: var(--muted);
+}
+.input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.input::placeholder { color: var(--border); }
+.clearBtn {
+  font-size: 16px;
+  color: var(--muted);
+  padding: 4px 8px;
+  transition: color var(--transition);
+  flex-shrink: 0;
+}
+.clearBtn:hover { color: var(--ink); }
+
+/* Suggestions */
+.suggestions { max-width: 720px; margin: 0 auto; }
+.suggestLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--white);
+  transition: all var(--transition);
+}
+.chip:hover { border-color: var(--ink); background: var(--ink); color: var(--cream); }
+
+.catRow { display: flex; flex-wrap: wrap; gap: 10px; }
+.catPill {
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+  transition: all var(--transition);
+}
+.catPill:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+/* Results */
+.resultsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.resultsCount { font-size: 14px; color: var(--muted); }
+.viewAll {
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: underline;
+  transition: opacity var(--transition);
+}
+.viewAll:hover { opacity: 0.6; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.skeletonCard { aspect-ratio: 3/4; border-radius: var(--radius); }
+
+.noResults {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .input { font-size: 22px; } }

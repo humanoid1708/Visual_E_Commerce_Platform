@@ -1,0 +1,62 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+.inner {
+  text-align: center;
+  max-width: 400px;
+  animation: fadeUp 0.5s ease;
+}
+.code {
+  font-family: var(--font-display);
+  font-size: 120px;
+  font-weight: 300;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: -0.04em;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.homeBtn {
+  padding: 12px 28px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: opacity var(--transition);
+}
+.homeBtn:hover { opacity: 0.85; }
+.browseBtn {
+  padding: 12px 28px;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+.browseBtn:hover { border-color: var(--ink); }
