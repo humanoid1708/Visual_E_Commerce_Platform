@@ -26,7 +26,7 @@ export default function ProductDetail() {
         setProduct(r.data)
         return axios.get(`${API}/products?category=${r.data.category}&limit=4`)
       })
-      .then(r => setRelated(r.data.products?.filter(p => p._id !== id) || []))
+      .then(r => setRelated(r.data.products?.filter(p => p.product_id !== id) || []))
       .catch(() => setProduct(null))
       .finally(() => setLoading(false))
   }, [id])

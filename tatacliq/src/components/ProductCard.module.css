@@ -89,3 +89,21 @@
   color: var(--muted);
   text-decoration: line-through;
 }
+
+.buyLink {
+  display: inline-block;
+  margin: 8px 12px 0;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--accent);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.buyLink:hover {
+  background: #2f6f6f;
+  transform: translateY(-1px);
+}

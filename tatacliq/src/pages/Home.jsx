@@ -28,51 +28,14 @@ export default function Home() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Dummy data for testing frontend without backend
-    const dummyProducts = [
-      {
-        _id: '1',
-        product_name: 'Elegant Dress',
-        brand: 'Zara',
-        category: 'women',
-        price: 2999,
-        mrp: 3999,
-        image_url: 'https://via.placeholder.com/300x400?text=Dress',
-        primary_color: 'Black'
-      },
-      {
-        _id: '2',
-        product_name: 'Casual Shirt',
-        brand: 'H&M',
-        category: 'men',
-        price: 1499,
-        mrp: 1999,
-        image_url: 'https://via.placeholder.com/300x400?text=Shirt',
-        primary_color: 'Blue'
-      },
-      {
-        _id: '3',
-        product_name: 'Kids T-Shirt',
-        brand: 'Nike',
-        category: 'kids',
-        price: 999,
-        mrp: 1299,
-        image_url: 'https://via.placeholder.com/300x400?text=T-Shirt',
-        primary_color: 'Red'
-      },
-      {
-        _id: '4',
-        product_name: 'Ethnic Kurti',
-        brand: 'Biba',
-        category: 'ethnic',
-        price: 1999,
-        mrp: 2499,
-        image_url: 'https://via.placeholder.com/300x400?text=Kurti',
-        primary_color: 'Green'
-      }
-    ]
-    setFeatured(dummyProducts)
-    setLoading(false)
+    // Fetch featured products from API
+    axios.get(`${API}/products?limit=8&sort=newest`)
+      .then(r => setFeatured(r.data.products || []))
+      .catch(err => {
+        console.error('Failed to fetch products:', err)
+        setFeatured([])
+      })
+      .finally(() => setLoading(false))
   }, [])
 
   // Auto-rotate banner

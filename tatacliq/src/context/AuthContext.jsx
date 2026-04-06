@@ -9,14 +9,17 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Skip Firebase for testing - set loading to false immediately
-    setLoading(false)
+    const unsub = onAuthStateChanged(auth, u => {
+      setUser(u)
+      setLoading(false)
+    })
+    return unsub
   }, [])
 
-  const loginWithGoogle = () => Promise.resolve()
-  const loginWithEmail  = (email, pw) => Promise.resolve()
-  const register        = (email, pw) => Promise.resolve()
-  const logout          = () => setUser(null)
+  const loginWithGoogle = () => signInWithPopup(auth, googleProvider)
+  const loginWithEmail  = (email, pw) => signInWithEmailAndPassword(auth, email, pw)
+  const register        = (email, pw) => createUserWithEmailAndPassword(auth, email, pw)
+  const logout          = () => signOut(auth)
 
   return (
     <AuthContext.Provider value={{ user, loading, loginWithGoogle, loginWithEmail, register, logout }}>

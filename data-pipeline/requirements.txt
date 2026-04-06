@@ -1,0 +1,4 @@
+kaggle
+pandas
+requests
+tqdm

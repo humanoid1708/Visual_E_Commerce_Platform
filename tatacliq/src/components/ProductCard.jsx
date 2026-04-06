@@ -9,6 +9,7 @@ export default function ProductCard({ product }) {
   const toast                    = useToast()
   const [imgError, setImgError]  = useState(false)
   const wishlisted = isWishlisted(product._id)
+  const externalUrl = product.ajio_url || product.ajioUrl
 
   const discount = product.mrp && product.price
     ? Math.round((1 - product.price / product.mrp) * 100)
@@ -20,9 +21,14 @@ export default function ProductCard({ product }) {
     toast(wishlisted ? 'Removed from wishlist' : 'Added to wishlist')
   }
 
+  const Wrapper = externalUrl ? 'a' : Link
+  const wrapperProps = externalUrl
+    ? { href: externalUrl, target: '_blank', rel: 'noopener noreferrer' }
+    : { to: `/product/${product.product_id}` }
+
   return (
     <div className={styles.card}>
-      <Link to={`/product/${product._id}`} className={styles.imageWrap}>
+      <Wrapper className={styles.imageWrap} {...wrapperProps}>
         {imgError || !product.image_url ? (
           <div className={styles.placeholder}>
             <span>{product.category?.[0] || 'F'}</span>
@@ -39,7 +45,18 @@ export default function ProductCard({ product }) {
         {discount >= 10 && (
           <span className={styles.discountBadge}>{discount}% off</span>
         )}
-      </Link>
+      </Wrapper>
+
+      {externalUrl && (
+        <a
+          href={externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.buyLink}
+        >
+          Buy on external site
+        </a>
+      )}
 
       <button
         className={`${styles.heartBtn} ${wishlisted ? styles.wishlisted : ''}`}
