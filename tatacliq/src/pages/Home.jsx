@@ -8,9 +8,7 @@ const CATEGORIES = [
   { label: 'Women',    slug: 'women',    color: '#E8D5C4' },
   { label: 'Men',      slug: 'men',      color: '#C4D0D8' },
   { label: 'Kids',     slug: 'kids',     color: '#D4E0C8' },
-  { label: 'Ethnic',   slug: 'ethnic',   color: '#DEC4C4' },
-  { label: 'Western',  slug: 'western',  color: '#C4C8DE' },
-  { label: 'Sale',     slug: 'sale',     color: '#E8C4C4' },
+
 ]
 
 const BANNERS = [

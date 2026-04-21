@@ -61,6 +61,9 @@ async function seed() {
         imageUrl = row.image_url
       }
 
+      const randomPrice = Math.floor(Math.random() * 2500) + 399; // 399 to 2899
+      const randomMrp = randomPrice + Math.floor(Math.random() * 800) + 200; // mrp is always higher
+
       await Product.updateOne(
         { product_id: pid },
         {
@@ -71,8 +74,8 @@ async function seed() {
             gender:        row.gender        || 'Unisex',
             category:      row.category      || '',
             primary_color: row.primary_color || '',
-            price:         Number(row.price) || 999,
-            mrp:           Number(row.mrp)   || 1499,
+            price:         randomPrice,
+            mrp:           randomMrp,
             rating:        Number(row.rating)|| 0,
             description:   row.description   || '',
             image_url:     imageUrl,

@@ -14,6 +14,7 @@ import Wishlist from './pages/Wishlist'
 import Cart from './pages/Cart'
 import Search from './pages/Search'
 import NotFound from './pages/NotFound'
+import VisualSearch from './pages/VisualSearch'
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
                   <Route path="/wishlist"    element={<Wishlist />} />
                   <Route path="/cart"        element={<Cart />} />
                   <Route path="/search"      element={<Search />} />
+                  <Route path="/search-by-image" element={<VisualSearch />} />
                   <Route path="*"            element={<NotFound />} />
                 </Routes>
               </div>

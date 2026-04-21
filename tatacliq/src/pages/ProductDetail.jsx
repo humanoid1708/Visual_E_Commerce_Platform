@@ -15,6 +15,7 @@ export default function ProductDetail() {
   const navigate                  = useNavigate()
   const [product, setProduct]   = useState(null)
   const [related, setRelated]   = useState([])
+  const [similar, setSimilar]   = useState([])
   const [loading, setLoading]   = useState(true)
   const [imgError, setImgError] = useState(false)
 
@@ -24,9 +25,15 @@ export default function ProductDetail() {
     axios.get(`${API}/products/${id}`)
       .then(r => {
         setProduct(r.data)
-        return axios.get(`${API}/products?category=${r.data.category}&limit=4`)
+        return Promise.all([
+          axios.get(`${API}/products?category=${r.data.category}&limit=4`),
+          axios.get(`${API}/products/${id}/similar`)
+        ])
       })
-      .then(r => setRelated(r.data.products?.filter(p => p.product_id !== id) || []))
+      .then(([relatedRes, similarRes]) => {
+        setRelated(relatedRes.data.products?.filter(p => p.product_id !== id) || [])
+        setSimilar(similarRes.data?.filter(p => p.product_id !== id) || [])
+      })
       .catch(() => setProduct(null))
       .finally(() => setLoading(false))
   }, [id])
@@ -180,6 +187,23 @@ export default function ProductDetail() {
             <div className={styles.relatedGrid}>
               {related.slice(0, 4).map(p => (
                 <ProductCard key={p._id} product={p} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Similar products by AI */}
+        {similar.length > 0 && (
+          <section className={styles.similarSection}>
+            <div className={styles.similarHeader}>
+              <h2 className={styles.similarTitle}>Similar Products</h2>
+              <span className={styles.similarBadge}>✨ AI Recommended</span>
+            </div>
+            <div className={styles.similarCarousel}>
+              {similar.map(p => (
+                <div key={p._id} className={styles.carouselItem}>
+                  <ProductCard product={p} />
+                </div>
               ))}
             </div>
           </section>

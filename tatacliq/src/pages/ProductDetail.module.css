@@ -184,9 +184,40 @@
 .notFound { text-align: center; padding: 80px 0; color: var(--muted); }
 .backLink { display: inline-block; margin-top: 16px; font-size: 13px; color: var(--ink); text-decoration: underline; }
 
+/* Similar */
+.similarSection { border-top: 1px solid var(--border); padding-top: 48px; margin-top: 48px; }
+.similarHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
+.similarTitle {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0;
+}
+.similarBadge {
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #9900ff 0%, #ff0055 100%);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.similarCarousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scroll-snap-type: x mandatory;
+}
+.similarCarousel::-webkit-scrollbar { height: 6px; }
+.similarCarousel::-webkit-scrollbar-thumb { background: #d1d1d1; border-radius: 6px; }
+.carouselItem { min-width: 240px; scroll-snap-align: start; flex-shrink: 0; }
+
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; gap: 32px; }
   .imageSection { position: static; }
   .relatedGrid { grid-template-columns: repeat(2, 1fr); }
   .metaGrid { grid-template-columns: repeat(2, 1fr); }
+  .carouselItem { min-width: 180px; }
 }

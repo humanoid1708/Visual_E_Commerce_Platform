@@ -72,11 +72,12 @@
   gap: 12px;
 }
 .catCard {
-  border-radius: 4px;
-  padding: 32px 16px;
+  border-radius: 8px;              /* slightly softer */
+  padding: 20px 12px;              /* reduced padding */
   display: flex;
-  align-items: flex-end;
-  min-height: 100px;
+  align-items: center;             /* center content vertically */
+  justify-content: center;         /* center horizontally */
+  min-height: 80px;                /* smaller height */
   transition: transform var(--transition), box-shadow var(--transition);
 }
 .catCard:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,23,20,0.1); }
